@@ -17,3 +17,16 @@ Then restart vim and run `:PlugInstall` command.
 ```
 nmap <leader>r :call ExecInTmuxSplit('python3 ' . expand('%:p'))<CR>
 ```
+
+If you want to execute commands in an existing pane, you can manually change value of `g:execSplitId` variable.
+
+```
+// First, you need to get target pane ID (in our case it is %199)
+.../exec-in-tmux-split on main [!]
+➜ tmux list-panes
+1: [187x101] [history 75/50000, 38320 bytes] %178
+2: [188x101] [history 0/50000, 0 bytes] %199 (active)
+
+// Second, change variable inside of vim
+:let g:execSplitId='%199'
+```
